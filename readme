@@ -1,0 +1,61 @@
+ Data Retrieval & Analysis
+Part A: Querying Using MongoDB Operators
+
+In this part, different MongoDB operators are used to retrieve data:
+
+Comparison operators ($gt, $lt, $gte, $lte)
+
+Logical operators ($and, $or)
+
+Element operators ($exists, $type)
+
+Evaluation operators ($regex, $expr)
+
+Array operators ($all, $size, $elemMatch)
+
+Part B: Aggregation Framework
+
+Aggregation pipelines are used to:
+
+Calculate total admissions per course
+
+Count students by admission status
+
+Identify most requested career domains
+
+Count event registrations
+
+Generate paginated reports
+
+Part C: Indexing, Sorting, and Pagination
+
+Indexes are created on frequently queried fields to improve performance
+
+Sorting is done using sort()
+
+Pagination is implemented using skip() and limit()
+
+Document counting is done using countDocuments() and estimatedDocumentCount()
+
+Backup and MongoDB Atlas
+
+The database is connected to MongoDB Atlas using MongoDB Compass
+
+Backup is created by exporting collections in JSON format using MongoDB Compass
+
+Screenshots of Atlas connection and backup are included in the repository
+
+Tools Used
+
+MongoDB Compass
+
+MongoDB Shell (mongosh)
+
+MongoDB Atlas
+
+GitHub
+
+Conclusion
+
+This project demonstrates how MongoDB can be used to design, manage, and analyze a college information system.
+It covers data insertion, updating, querying, aggregation, indexing, and backup operations using MongoDB Compass Shell.

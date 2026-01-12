@@ -1,0 +1,80 @@
+1 mongosh
+
+2 use college_db
+
+3 db.students.find({ dateOfBirth: { $lt: ISODate("2004-01-01") } })
+
+4 db.courses.find({ fee: { $gte: 140000, $lte: 200000 } })
+
+5 db.admissions.find({ courseId: "CS101", status: "approved" })
+
+6 db.students.find({
+  $and: [
+    { isActive: true },
+    { dateOfBirth: { $gt: ISODate("2002-01-01") } }
+  ]
+})
+
+7 db.admissions.find({
+  $or: [
+    { status: "pending" },
+    { status: "rejected" }
+  ]
+})
+
+db.students.find({ mobile: { $exists: true } })
+
+db.students.find({ dateOfBirth: { $type: "date" } })
+
+db.students.find({ name: { $regex: "^A", $options: "i" } })
+
+db.students.find({
+  $expr: { $gt: ["$createdAt", "$dateOfBirth"] }
+})
+
+db.career_requests.find({
+  skills: { $all: ["React", "Node.js"] }
+})
+
+db.career_requests.find({ skills: { $size: 2 } })
+
+db.career_requests.find({
+  skills: { $elemMatch: { $eq: "MongoDB" } }
+})
+
+db.admissions.aggregate([
+  { $group: { _id: "$courseId", totalAdmissions: { $sum: 1 } } }
+])
+
+db.admissions.aggregate([
+  { $group: { _id: "$status", count: { $sum: 1 } } }
+])
+
+db.career_requests.aggregate([
+  { $group: { _id: "$domainId", totalRequests: { $sum: 1 } } },
+  { $sort: { totalRequests: -1 } }
+])
+
+db.event_registrations.aggregate([
+  { $group: { _id: "$eventId", registrations: { $sum: 1 } } }
+])
+
+db.students.aggregate([
+  { $sort: { name: 1 } },
+  { $skip: 0 },
+  { $limit: 3 }
+])
+
+db.students.createIndex({ name: 1 })
+db.admissions.createIndex({ status: 1 })
+
+db.students.getIndexes()
+
+db.students.dropIndex("name_1")
+
+db.students.find().sort({ name: 1 })
+
+db.students.find().skip(2).limit(2)
+
+db.students.countDocuments({ isActive: true })
+db.students.estimatedDocumentCount()
